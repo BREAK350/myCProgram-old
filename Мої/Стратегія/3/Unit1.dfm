@@ -1,0 +1,121 @@
+object Form1: TForm1
+  Left = 192
+  Top = 124
+  Width = 928
+  Height = 480
+  Caption = 'Form1'
+  Color = clWhite
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  OnClick = FormClick
+  OnMouseMove = FormMouseMove
+  PixelsPerInch = 96
+  TextHeight = 13
+  object TrackBar1: TTrackBar
+    Left = 728
+    Top = 16
+    Width = 150
+    Height = 45
+    Max = 100
+    Min = 1
+    Orientation = trHorizontal
+    Frequency = 1
+    Position = 1
+    SelEnd = 0
+    SelStart = 0
+    TabOrder = 0
+    TickMarks = tmBottomRight
+    TickStyle = tsAuto
+    OnChange = TrackBar1Change
+  end
+  object TrackBar2: TTrackBar
+    Left = 728
+    Top = 64
+    Width = 150
+    Height = 45
+    Max = 50
+    Min = -50
+    Orientation = trHorizontal
+    Frequency = 1
+    Position = 0
+    SelEnd = 0
+    SelStart = 0
+    TabOrder = 1
+    TickMarks = tmBottomRight
+    TickStyle = tsAuto
+    OnChange = TrackBar2Change
+  end
+  object TrackBar3: TTrackBar
+    Left = 728
+    Top = 112
+    Width = 150
+    Height = 45
+    Max = 50
+    Min = -50
+    Orientation = trHorizontal
+    Frequency = 1
+    Position = 0
+    SelEnd = 0
+    SelStart = 0
+    TabOrder = 2
+    TickMarks = tmBottomRight
+    TickStyle = tsAuto
+    OnChange = TrackBar3Change
+  end
+  object Button1: TButton
+    Left = 728
+    Top = 168
+    Width = 113
+    Height = 25
+    Caption = 'ChooseMember'
+    TabOrder = 3
+    OnClick = Button1Click
+  end
+  object Edit1: TEdit
+    Left = 728
+    Top = 264
+    Width = 121
+    Height = 21
+    TabOrder = 4
+  end
+  object Button2: TButton
+    Left = 728
+    Top = 200
+    Width = 75
+    Height = 25
+    Caption = 'MoveTo'
+    TabOrder = 5
+    OnClick = Button2Click
+  end
+  object Button3: TButton
+    Left = 728
+    Top = 232
+    Width = 75
+    Height = 25
+    Caption = 'Attack'
+    TabOrder = 6
+    OnClick = Button3Click
+  end
+  object Button4: TButton
+    Left = 808
+    Top = 200
+    Width = 75
+    Height = 25
+    Caption = 'NextNation'
+    TabOrder = 7
+    OnClick = Button4Click
+  end
+  object Button5: TButton
+    Left = 728
+    Top = 320
+    Width = 75
+    Height = 25
+    Caption = 'Poligon'
+    TabOrder = 8
+    OnClick = Button5Click
+  end
+end

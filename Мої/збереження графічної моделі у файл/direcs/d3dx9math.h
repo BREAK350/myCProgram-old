@@ -1,0 +1,223 @@
+/*
+
+	d3dx9math.h - Header file for the Direct3D9 Utility API
+
+	Written by Filip Navara <xnavara@volny.cz>
+
+	This library is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+*/
+
+#ifndef _D3DX9MATH_H
+#define _D3DX9MATH_H
+#if __GNUC__ >=3
+#pragma GCC system_header
+#endif
+
+#include <math.h>
+#define D3DX_PI	(3.141592654f)
+
+#ifdef __cplusplus
+class D3DXVECTOR3 : public D3DVECTOR
+{
+	public:
+		D3DXVECTOR3();
+		D3DXVECTOR3(const FLOAT *);
+		D3DXVECTOR3(const D3DXVECTOR3 &);
+//		D3DXVECTOR3(const D3DXFLOAT16 *);
+		D3DXVECTOR3(FLOAT,FLOAT,FLOAT);
+
+		operator FLOAT* ();
+		operator const FLOAT* () const;
+
+		D3DXVECTOR3 &operator += (const D3DXVECTOR3 &);
+		D3DXVECTOR3 &operator -= (const D3DXVECTOR3 &);
+		D3DXVECTOR3 &operator *= (const FLOAT);
+		D3DXVECTOR3 &operator /= (const FLOAT);
+
+		D3DXVECTOR3 operator + () const;
+		D3DXVECTOR3 operator - () const;
+
+		D3DXVECTOR3 operator + (const D3DXVECTOR3 &) const;
+		D3DXVECTOR3 operator - (const D3DXVECTOR3 &) const;
+		D3DXVECTOR3 operator * (const FLOAT) const;
+		D3DXVECTOR3 operator / (const FLOAT) const;
+
+		bool operator == (const D3DXVECTOR3 &) const;
+		bool operator != (const D3DXVECTOR3 &) const;
+};
+typedef D3DXVECTOR3 *LPD3DXVECTOR3;
+#else
+typedef D3DVECTOR D3DXVECTOR3, *LPD3DXVECTOR3;
+#endif
+
+#ifdef __cplusplus
+class D3DXVECTOR4
+{
+	public:
+		FLOAT x, y, z, w;
+};
+typedef D3DXVECTOR4 *LPD3DXVECTOR4;
+#else
+typedef struct D3DXVECTOR4 {
+	FLOAT x, y, z, w;
+} D3DXVECTOR4, *LPD3DXVECTOR4;
+#endif
+
+#ifdef __cplusplus
+class D3DXMATRIX : public D3DMATRIX
+{
+	public:
+		D3DXMATRIX();
+		D3DXMATRIX(const FLOAT *);
+		D3DXMATRIX(const D3DMATRIX &);
+		D3DXMATRIX(
+			FLOAT,FLOAT,FLOAT,FLOAT,
+			FLOAT,FLOAT,FLOAT,FLOAT,
+			FLOAT,FLOAT,FLOAT,FLOAT,
+			FLOAT,FLOAT,FLOAT,FLOAT
+		);
+
+		operator FLOAT* ();
+		operator const FLOAT* () const;
+
+		D3DXMATRIX& operator += (const D3DXMATRIX&);
+		D3DXMATRIX& operator -= (const D3DXMATRIX&);
+		D3DXMATRIX& operator *= (const D3DXMATRIX&);
+		D3DXMATRIX& operator *= (const FLOAT);
+		D3DXMATRIX& operator /= (const FLOAT);
+
+		D3DXMATRIX operator + () const;
+		D3DXMATRIX operator - () const;
+
+		D3DXMATRIX operator + (const D3DXMATRIX&) const;
+		D3DXMATRIX operator - (const D3DXMATRIX&) const;
+		D3DXMATRIX operator * (const D3DXMATRIX&) const;
+		D3DXMATRIX operator * (const FLOAT) const;
+		D3DXMATRIX operator / (const FLOAT) const;
+
+		bool operator == (const D3DXMATRIX&) const;
+		bool operator != (const D3DXMATRIX&) const;
+};
+typedef D3DXMATRIX* LPD3DXMATRIX;
+#else
+typedef D3DMATRIX D3DXMATRIX, *LPD3DXMATRIX;
+#endif
+
+#ifdef __cplusplus
+class D3DXPLANE
+{
+	public:
+		FLOAT a, b, c, d;
+};
+typedef D3DXPLANE* LPD3DXPLANE;
+#else
+typedef struct {
+	FLOAT a, b, c, d;
+} D3DXPLANE, *LPD3DXPLANE;
+#endif
+
+#ifdef __cplusplus
+class D3DXQUATERNION
+{
+	public:
+		D3DXQUATERNION();
+		D3DXQUATERNION(CONST FLOAT *);
+		D3DXQUATERNION(FLOAT,FLOAT,FLOAT,FLOAT);
+
+		operator FLOAT* ();
+		operator CONST FLOAT* () const;
+
+		D3DXQUATERNION& operator += (CONST D3DXQUATERNION&);
+		D3DXQUATERNION& operator -= (CONST D3DXQUATERNION&);
+		D3DXQUATERNION& operator *= (CONST D3DXQUATERNION&);
+		D3DXQUATERNION& operator *= (FLOAT);
+		D3DXQUATERNION& operator /= (FLOAT);
+
+		D3DXQUATERNION operator + () const;
+		D3DXQUATERNION operator - () const;
+
+		D3DXQUATERNION operator + (CONST D3DXQUATERNION&) const;
+		D3DXQUATERNION operator - (CONST D3DXQUATERNION&) const;
+		D3DXQUATERNION operator * (CONST D3DXQUATERNION&) const;
+		D3DXQUATERNION operator * (FLOAT) const;
+		D3DXQUATERNION operator / (FLOAT) const;
+
+		bool operator == (CONST D3DXQUATERNION&) const;
+		bool operator != (CONST D3DXQUATERNION&) const;
+
+	public:
+		FLOAT x, y, z, w;
+};
+typedef D3DXQUATERNION* LPD3DXQUATERNION;
+#else
+typedef struct {
+	FLOAT x, y, z, w;
+} D3DXQUATERNION, *LPD3DXQUATERNION;
+#endif
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+// Inline Matrix Functions
+D3DXMATRIX* D3DXMatrixIdentity(D3DXMATRIX*); 
+BOOL D3DXMatrixIsIdentity(CONST D3DXMATRIX*);
+
+// Non-inline Matrix Functions
+D3DXMATRIX* WINAPI D3DXMatrixAffineTransformation(D3DXMATRIX*,FLOAT,CONST D3DXVECTOR3*,CONST D3DXQUATERNION*,CONST D3DXVECTOR3*);
+FLOAT WINAPI D3DXMatrixDeterminant(CONST D3DXMATRIX*);
+D3DXMATRIX* WINAPI D3DXMatrixInverse(D3DXMATRIX*,FLOAT*,CONST D3DXMATRIX*);
+D3DXMATRIX* WINAPI D3DXMatrixLookAtLH(D3DXMATRIX*,const D3DXVECTOR3*,const D3DXVECTOR3*,const D3DXVECTOR3*);
+D3DXMATRIX* WINAPI D3DXMatrixLookAtRH(D3DXMATRIX*,CONST D3DXVECTOR3*,CONST D3DXVECTOR3*,CONST D3DXVECTOR3*);
+D3DXMATRIX* WINAPI D3DXMatrixMultiply(D3DXMATRIX*,const D3DXMATRIX*,const D3DXMATRIX*);
+D3DXMATRIX* WINAPI D3DXMatrixMultiplyTranspose(D3DXMATRIX*,CONST D3DXMATRIX*,CONST D3DXMATRIX*);
+D3DXMATRIX* WINAPI D3DXMatrixOrthoLH(D3DXMATRIX*,FLOAT,FLOAT,FLOAT,FLOAT);
+D3DXMATRIX* WINAPI D3DXMatrixOrthoOffCenterLH(D3DXMATRIX*,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT);
+D3DXMATRIX* WINAPI D3DXMatrixOrthoOffCenterRH(D3DXMATRIX*,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT);
+D3DXMATRIX* WINAPI D3DXMatrixOrthoRH(D3DXMATRIX*,FLOAT,FLOAT,FLOAT,FLOAT);
+D3DXMATRIX* WINAPI D3DXMatrixPerspectiveFovLH(D3DXMATRIX*,FLOAT,FLOAT,FLOAT,FLOAT);
+D3DXMATRIX* WINAPI D3DXMatrixPerspectiveFovRH(D3DXMATRIX*,FLOAT,FLOAT,FLOAT,FLOAT);
+D3DXMATRIX* WINAPI D3DXMatrixPerspectiveLH(D3DXMATRIX*,FLOAT,FLOAT,FLOAT,FLOAT);
+D3DXMATRIX* WINAPI D3DXMatrixPerspectiveOffCenterLH(D3DXMATRIX*,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT);
+D3DXMATRIX* WINAPI D3DXMatrixPerspectiveOffCenterRH(D3DXMATRIX*,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT);
+D3DXMATRIX* WINAPI D3DXMatrixPerspectiveRH(D3DXMATRIX*,FLOAT,FLOAT,FLOAT,FLOAT);
+D3DXMATRIX* WINAPI D3DXMatrixReflect(D3DXMATRIX*,CONST D3DXPLANE*);
+D3DXMATRIX* WINAPI D3DXMatrixRotationAxis(D3DXMATRIX*,CONST D3DXVECTOR3*,FLOAT);
+D3DXMATRIX* WINAPI D3DXMatrixRotationQuaternion(D3DXMATRIX*,CONST D3DXQUATERNION*);
+D3DXMATRIX* WINAPI D3DXMatrixRotationYawPitchRoll(D3DXMATRIX*,FLOAT,FLOAT,FLOAT);
+D3DXMATRIX* WINAPI D3DXMatrixRotationX(D3DXMATRIX*,FLOAT);
+D3DXMATRIX* WINAPI D3DXMatrixRotationY(D3DXMATRIX*,FLOAT);
+D3DXMATRIX* WINAPI D3DXMatrixRotationZ(D3DXMATRIX*,FLOAT);
+D3DXMATRIX* WINAPI D3DXMatrixTranslation(D3DXMATRIX*,FLOAT,FLOAT,FLOAT);
+D3DXMATRIX* WINAPI D3DXMatrixScaling(D3DXMATRIX*,FLOAT,FLOAT,FLOAT);
+D3DXMATRIX* WINAPI D3DXMatrixShadow(D3DXMATRIX*,CONST D3DXVECTOR4*,CONST D3DXPLANE*);
+D3DXMATRIX* WINAPI D3DXMatrixTransformation(D3DXMATRIX*,CONST D3DXVECTOR3*,CONST D3DXQUATERNION*,CONST D3DXVECTOR3*,CONST D3DXVECTOR3*,CONST D3DXQUATERNION*,CONST D3DXVECTOR3*);
+D3DXMATRIX* WINAPI D3DXMatrixTranslation(D3DXMATRIX*,FLOAT,FLOAT,FLOAT);
+D3DXMATRIX* WINAPI D3DXMatrixTranspose(D3DXMATRIX*,CONST D3DXMATRIX*);
+
+// Non-inline Plane Functions
+D3DXPLANE* WINAPI D3DXPlaneNormalize(D3DXPLANE* pOut, CONST D3DXPLANE* pP);
+
+// Non-inline Quaternion Functions
+D3DXQUATERNION* WINAPI D3DXQuaternionMultiply(D3DXQUATERNION*,CONST D3DXQUATERNION*,CONST D3DXQUATERNION*);
+
+// Inline Vector Functions
+FLOAT D3DXVec3Dot(const D3DXVECTOR3 *pV1, const D3DXVECTOR3 *pV2);
+D3DXVECTOR3* D3DXVec3Cross(D3DXVECTOR3 *pOut, const D3DXVECTOR3 *pV1, const D3DXVECTOR3 *pV2);
+FLOAT D3DXVec3Length(const D3DXVECTOR3 *pV);
+D3DXVECTOR3* D3DXVec3Subtract(D3DXVECTOR3 *pOut, const D3DXVECTOR3 *pV1, const D3DXVECTOR3 *pV2);
+
+// Non-inline Vector Functions
+D3DXVECTOR3* WINAPI D3DXVec3Normalize(D3DXVECTOR3*,CONST D3DXVECTOR3*);
+
+#ifdef __cplusplus
+};
+#endif
+
+#include "d3dx9math.inl"
+
+#endif
